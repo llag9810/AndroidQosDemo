@@ -10,12 +10,14 @@
     <EditText
         android:id="@+id/Edit_text"
         android:hint="hostname"
+        android:text="134.175.51.67"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/port_edit_text"
         android:hint="port"
+        android:text="2333"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

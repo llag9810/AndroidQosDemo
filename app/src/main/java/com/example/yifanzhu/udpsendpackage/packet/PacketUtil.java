@@ -1,4 +1,4 @@
-package com.example.yifanzhu.udpsendpackage.network;
+package com.example.yifanzhu.udpsendpackage.packet;
 
 import java.net.DatagramPacket;
 import java.net.InetAddress;
@@ -7,7 +7,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class PacketUtil {
-    private static int HEADER_LENGTH = 12;
+    public static int HEADER_LENGTH = 12;
 
     public static DatagramPacket makePacket(PacketHeader header, byte[] data, String ip, int port)
             throws UnknownHostException {
@@ -44,15 +44,17 @@ public class PacketUtil {
         header.setPacketFec(buffer.get());          // packetFEC   - 1 byte
         header.setPacketIdx(buffer.get());          // packetIndex - 1 byte
         // The last 4 byte of Header are shared by frameSerial or loss info.
-        // Write different data for different packet type.
+        // set different fields for different packet type.
         if ((header.getFlag() & PacketHeader.FLAG_DATA) != 0) {
-            // Write frame serial for data packet.
+            // set frame serial for data packet.
             header.setFrameSerial(buffer.getInt());
         } else if ((header.getFlag() & PacketHeader.FLAG_REPLY_LOSS) != 0) {
             // Write loss info for loss reply packet.
             header.setPacketRecv(buffer.getShort());
             header.setPacketSend(buffer.getShort());
         }
-        // for other type(e.g: )
+        // for other type(e.g: ack), no need to set.
+
+        return header;
     }
 }

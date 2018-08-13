@@ -1,4 +1,4 @@
-package com.example.yifanzhu.udpsendpackage.network;
+package com.example.yifanzhu.udpsendpackage.packet;
 
 public class PacketHeader {
 
