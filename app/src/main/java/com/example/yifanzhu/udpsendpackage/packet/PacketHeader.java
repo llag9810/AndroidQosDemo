@@ -1,11 +1,13 @@
 package com.example.yifanzhu.udpsendpackage.network;
 
-public class PackageHeader {
+public class PacketHeader {
 
-    public static final int FLAG_REQUEST_ACK = 0x80;
-    public static final int FLAG_REPLY = 0x40;
-    public static final int FLAG_VIDEO = 0x01;
-    public static final int FLAG_LOSS = 0x10;
+    public static final int FLAG_DATA = 0x01;
+    public static final int FLAG_REPLY_LOSS = 0x02;
+    public static final int FLAG_REPLY_ACK = 0x04;
+    public static final int FLAG_REQUEST_ACK = 0x08;
+    public static final int FLAG_START = 0x10;
+    public static final int FLAG_END = 0x20;
 
     private short length;
     private short seq;
@@ -16,8 +18,6 @@ public class PackageHeader {
     private int frameSerial;
     private short packetRecv;
     private short packetSend;
-
-
 
     public short getPacketRecv() {
         return packetRecv;
@@ -86,6 +86,7 @@ public class PackageHeader {
     public int getFrameSerial() {
         return frameSerial;
     }
+
     public void setFrameSerial(int serial) {
         this.frameSerial = serial;
     }
