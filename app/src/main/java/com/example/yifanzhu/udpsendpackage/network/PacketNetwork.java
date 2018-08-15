@@ -1,21 +1,27 @@
 package com.example.yifanzhu.udpsendpackage.network;
 
+import com.example.yifanzhu.udpsendpackage.interfaces.IPacketNetwork;
+
 import java.net.DatagramPacket;
 
-public class PacketNetwork {
+public class PacketNetwork implements IPacketNetwork {
+    @Override
+    public void sendPacket(DatagramPacket packet) {
+        
+    }
+
+    @Override
     public void setSendInterval(int ms) {
-        // TODO: Set send interval between two packets.
+
     }
 
-    public void addPacket(DatagramPacket packet) {
-        // TODO: Add packet to queue.
+    @Override
+    public void startLoop() {
+
     }
 
-    public interface OnSendListener {
-        void onSend(DatagramPacket packet);
-    }
+    @Override
+    public void stopLoop() {
 
-    public interface OnReceiveListener {
-        void onReceive(DatagramPacket packet);
     }
 }

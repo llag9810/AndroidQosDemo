@@ -29,6 +29,7 @@ public class PacketUtil {
             buffer.putInt(header.getFrameSerial());
         }
 
+        buffer.put(data);
         return new DatagramPacket(sendBuf, sendBuf.length, InetAddress.getByName(ip), port);
     }
 
