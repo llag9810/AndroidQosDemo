@@ -6,8 +6,8 @@ import com.example.yifanzhu.udpsendpackage.packet.PacketHeader;;
 
 import java.net.DatagramPacket;
 
-public class QosServerThread extends Thread implements IPacketConsumer {
-    private static final String TAG = "QosServerThread";
+public class QosClientThread extends Thread implements IPacketConsumer {
+    private static final String TAG = "QosClientThread";
     private IPacketNetwork network = null;
 
     // for packet generation
@@ -27,7 +27,7 @@ public class QosServerThread extends Thread implements IPacketConsumer {
     private int bandwithData = 0;
     private int bandwithFec = 0;
 
-    public QosServerThread() {
+    public QosClientThread() {
         super();
     }
 
